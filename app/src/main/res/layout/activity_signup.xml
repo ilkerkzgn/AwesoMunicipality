@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity">
+
+    <EditText
+        android:id="@+id/editText_password2"
+        android:layout_width="301dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="password (again)"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editText_mail"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="325dp"
+        android:layout_height="234dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo2" />
+
+    <Button
+        android:id="@+id/button_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/button_signup"
+        android:onClick="signup"
+        app:layout_constraintStart_toStartOf="@+id/editText_password"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password2" />
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="301dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editText_mail"
+        app:layout_constraintTop_toBottomOf="@+id/editText_mail" />
+
+    <EditText
+        android:id="@+id/editText_mail"
+        android:layout_width="301dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="264dp"
+        android:ems="10"
+        android:hint="e-mail"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icon_back"
+        android:layout_width="36dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="16dp"
+        android:onClick="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back" />
+
+    <ImageView
+        android:id="@+id/visibility_on2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="VisibilityOn2"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_password2"
+        app:layout_constraintEnd_toEndOf="@+id/editText_password2"
+        app:layout_constraintTop_toTopOf="@+id/editText_password2"
+        app:srcCompat="@drawable/baseline_visibility_black_18dp" />
+
+    <ImageView
+        android:id="@+id/visibility_off2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="VisibilityOff2"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_password2"
+        app:layout_constraintEnd_toEndOf="@+id/editText_password2"
+        app:layout_constraintTop_toTopOf="@+id/editText_password2"
+        app:srcCompat="@drawable/baseline_visibility_off_black_18dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
