@@ -7,81 +7,74 @@
     tools:context=".Complain2">
 
     <ImageView
-        android:id="@+id/icon_back"
-        android:layout_width="36dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="16dp"
-        android:onClick="back"
+        android:id="@+id/background2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_back" />
+        app:srcCompat="@drawable/background_repeat" />
 
-    <ImageView
-        android:id="@+id/location"
-        android:layout_width="293dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_complain2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/takeapicture"
-        app:srcCompat="@drawable/location" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/takeapicture"
-        android:layout_width="293dp"
+        android:layout_width="301dp"
         android:layout_height="63dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_complain2"
         app:srcCompat="@drawable/takeapicture" />
 
     <ImageView
         android:id="@+id/icon_camera"
-        android:layout_width="66dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="117dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="12dp"
         android:onClick="icon_camera"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/takeapicture"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/takeapicture"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/takeapicture"
+        app:layout_constraintTop_toBottomOf="@+id/takeapicture"
         app:srcCompat="@drawable/icon_camera" />
 
     <ImageView
-        android:id="@+id/icon_location"
-        android:layout_width="66dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="icon_location"
+        android:id="@+id/preview"
+        android:layout_width="325dp"
+        android:layout_height="387dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/location"
-        app:layout_constraintTop_toBottomOf="@+id/icon_camera"
-        app:srcCompat="@drawable/icon_location" />
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_complain2"
+        app:srcCompat="@drawable/applogo_normal" />
 
-    <EditText
-        android:id="@+id/additional_info"
+    <ImageView
+        android:id="@+id/button_continue"
         android:layout_width="wrap_content"
-        android:layout_height="152dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:hint="3rd : Any additional information?
-
-
-        Please insert here"
-        android:inputType="textEmailAddress|textMultiLine"
-        android:lines="20"
-        android:minLines="5"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:onClick="complain2_continue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/location" />
+        app:layout_constraintTop_toBottomOf="@+id/preview"
+        app:srcCompat="@drawable/button_continue"
+/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,7 +98,6 @@ public class SignupActivity extends AppCompatActivity {
                                         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                                     }else {
                                         Toast.makeText(SignupActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                        Toast.makeText(SignupActivity.this, "Please Try Again", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -108,7 +107,6 @@ public class SignupActivity extends AppCompatActivity {
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
                             Toast.makeText(SignupActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                            Toast.makeText(SignupActivity.this, "Please Try Again", Toast.LENGTH_SHORT).show();
                         }
                     });
 

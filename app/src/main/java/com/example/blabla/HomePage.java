@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -20,23 +18,24 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import eu.long1.spacetablayout.SpaceTabLayout;
 
 public class HomePage extends AppCompatActivity {
 
-    Button button_home;
+    Button button_complain;
     SpaceTabLayout tabLayout;
-    BottomNavigationView bottom_menu_home;
-    private Fragment temporalFragment;
     Toolbar toolbar_home;
     private FirebaseAuth firebaseAuth;
 
+    public void onBackPressed() {
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
+
+    }
     //TOOLBAR
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,9 +62,11 @@ public class HomePage extends AppCompatActivity {
                        final ProgressDialog progressDialog = new ProgressDialog(HomePage.this);
                        progressDialog.setMessage("Please wait while we handling this..");
                        progressDialog.show();
+
                        try {
                            firebaseAuth.signOut();
                            Intent intentToLogin = new Intent(HomePage.this,LoginActivity.class);
+                           intentToLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                            startActivity(intentToLogin);
                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                            finish();
@@ -79,10 +80,20 @@ public class HomePage extends AppCompatActivity {
                });
                AlertDialog alert2 = builder.create();
                alert2.show();
-           }else if (item.getItemId() == R.id.menu_complain){
-               Intent intentToComplain = new Intent(HomePage.this,Complain.class);
+           }
+           // COMPLAIN
+
+           else if (item.getItemId() == R.id.menu_complain){
+               Intent intentToComplain = new Intent(HomePage.this,Complain2.class);
                startActivity(intentToComplain);
                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+           }
+           else if (item.getItemId() == R.id.menu_my_complains){
+
+               Intent intent = new Intent(getApplicationContext(),MyComplaints.class);
+               startActivity(intent);
+               overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
            }
                 return super.onOptionsItemSelected(item);
     }
@@ -101,65 +112,12 @@ public class HomePage extends AppCompatActivity {
         toolbar_home.setTitleTextAppearance(this,R.style.SatisfyText);
         setSupportActionBar(toolbar_home);
 
-
-        //BOTTOM MENU
-        bottom_menu_home = findViewById(R.id.bottom_menu_home);
-
-        getSupportFragmentManager().beginTransaction().add(R.id.holder_main,new fragment_home()).commit();
-
-        bottom_menu_home.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                if (menuItem.getItemId() == R.id.menu_home){
-                    temporalFragment = new fragment_home();
-                }
-                else if (menuItem.getItemId() == R.id.menu_profile){
-                   temporalFragment = new fragment_profile();
-                }
-                getSupportFragmentManager().beginTransaction().add(R.id.holder_main,temporalFragment).commit();
-                return true;
-            }
-
-        });
-
-
-
-
-        /*
-        //add the fragments you want to display in a List
-        List<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new FragmentA());
-        fragmentList.add(new FragmentB());
-        fragmentList.add(new FragmentC());
-
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        tabLayout = (SpaceTabLayout) findViewById(R.id.spaceTabLayout);
-
-        //we need the savedInstanceState to get the position
-        tabLayout.initialize(viewPager, getSupportFragmentManager(),
-                fragmentList, savedInstanceState); */
-
     }
 
-    /*
-    //we need the outState to save the position
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        tabLayout.saveState(outState);
-        super.onSaveInstanceState(outState);
-    }
-*/
     //COMPLAIN BUTTON
-    public void didTapButton(View view) {
-        button_home = findViewById(R.id.button_home);
-        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
-        // Use bounce interpolator with amplitude 0.2 and frequency 20
-        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
-        myAnim.setInterpolator(interpolator);
-        button_home.startAnimation(myAnim);
-
-        Intent intentToComplain = new Intent(HomePage.this,Complain.class);
+    public void complain(View view) {
+        button_complain = findViewById(R.id.button_home);
+        Intent intentToComplain = new Intent(HomePage.this,Complain2.class);
         startActivity(intentToComplain);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
